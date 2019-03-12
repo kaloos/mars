@@ -1,5 +1,5 @@
-require 'Plateau'
-require 'Rover'
+require_relative 'Plateau'
+require_relative 'Rover'
 
 class Mars
   MRS_STR_EXIT = "-1"
@@ -9,7 +9,9 @@ class Mars
   end
 
   def set_debug(bool_in)
-    @do_debug = bool_in
+    if bool_in!=nil
+      @do_debug = bool_in
+    end
   end
 
   def puts_debug(str_in)
@@ -110,6 +112,8 @@ class Mars
       end
   end
 end
+
+
 
 
 m = Mars.new

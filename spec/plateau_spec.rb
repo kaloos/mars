@@ -38,9 +38,24 @@ RSpec.describe 'A plateau' do
       plateau = Plateau.new(nil,nil)
     }.to raise_error(ArgumentError)
   end
+  it 'should not be created with negative integers' do
+    expect {
+      plateau = Plateau.new(-1,MAX_PLATEAU_Y)
+    }.to raise_error(ArgumentError)
+  end
+  it 'should not be created with negative integers (2)' do
+    expect {
+      plateau = Plateau.new(MAX_PLATEAU_X,-1)
+    }.to raise_error(ArgumentError)
+  end
+  it 'should not be created with negative integers (3)' do
+    expect {
+      plateau = Plateau.new(-1,-1)
+    }.to raise_error(ArgumentError)
+  end
 
   before :each do
-      @plateau = Plateau.new(MAX_PLATEAU_X,MAX_PLATEAU_Y)
+    @plateau = Plateau.new(MAX_PLATEAU_X,MAX_PLATEAU_Y)
   end
   it 'should be able to accept a rover inside the plateau' do
     rover = Rover.new(MAX_PLATEAU_X,MAX_PLATEAU_Y,"N")
@@ -61,24 +76,6 @@ RSpec.describe 'A plateau' do
   end
   it 'should not be able to accept a rover outside the plateau (3)' do
     rover = Rover.new(MAX_PLATEAU_X+1,MAX_PLATEAU_Y+1,"N")
-    expect {
-      @plateau.add_rover(rover)
-    }.to raise_error(ArgumentError)
-  end
-  it 'should not be able to accept a rover outside the plateau (4)' do
-    rover = Rover.new(-1,MAX_PLATEAU_Y,"N")
-    expect {
-      @plateau.add_rover(rover)
-    }.to raise_error(ArgumentError)
-  end
-  it 'should not be able to accept a rover outside the plateau (5)' do
-    rover = Rover.new(MAX_PLATEAU_X,-1,"N")
-    expect {
-      @plateau.add_rover(rover)
-    }.to raise_error(ArgumentError)
-  end
-  it 'should not be able to accept a rover outside the plateau (6)' do
-    rover = Rover.new(-1,-1,"N")
     expect {
       @plateau.add_rover(rover)
     }.to raise_error(ArgumentError)

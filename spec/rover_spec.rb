@@ -43,6 +43,21 @@ RSpec.describe 'A rover' do
       rover = Rover.new(nil,nil,nil)
     }.to raise_error(ArgumentError)
   end
+  it 'should not be created with negative integers' do
+    expect {
+      rover = Rover.new(-1,ROV_MAX_Y,'N')
+    }.to raise_error(ArgumentError)
+  end
+  it 'should not be created with negative integers (2)' do
+    expect {
+      rover = Rover.new(ROV_MAX_X,-1,'N')
+    }.to raise_error(ArgumentError)
+  end
+  it 'should not be created with negative integers (3)' do
+    expect {
+      rover = Rover.new(-1,-1,'N')
+    }.to raise_error(ArgumentError)
+  end
 
   before :each do
       @rover = Rover.new(ROV_MAX_X,ROV_MAX_Y,"N")

@@ -1,23 +1,21 @@
 class Rover
   ROV_INPUT_ERR01 = 'The value passed is not an integer'
   ROV_INPUT_ERR02 = 'The value passed is not a proper rover orientation'
+  ROV_INPUT_ERR03 = 'The value passed is not a positive integer'
+
   attr_reader :x_coordinate, :y_coordinate, :orientation
 
-  def input_is_ok(x, y, orientation)
+
+  def initialize (x, y, orientation)
     #check x, y are integers
     raise ArgumentError, ROV_INPUT_ERR01 unless x.is_a?(Integer) and y.is_a?(Integer)
     #check orientation has one of the proper values
     raise ArgumentError, ROV_INPUT_ERR02 unless ['N','S','E','W'].include?(orientation)
-    #check x,y are >=0
-    return x>=0 && y>=0
-  end
-
-  def initialize (rover_x, rover_y, rover_orientation)
-    if input_is_ok(rover_x, rover_y, rover_orientation)
-      @x_coordinate = rover_x
-      @y_coordinate = rover_y
-      @orientation = rover_orientation
-    end
+    #check x,y are positive integers
+    raise ArgumentError, ROV_INPUT_ERR03 unless x>=0 && y>=0
+    @x_coordinate = x
+    @y_coordinate = y
+    @orientation = orientation
   end
 
   def get_position()
@@ -35,6 +33,7 @@ class Rover
           when "W" then @orientation = "S"
         end
   end
+
   def turn_right
     case @orientation
         when "N" then @orientation = "E"

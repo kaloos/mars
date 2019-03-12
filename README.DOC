@@ -34,14 +34,11 @@ Test Input:
 1 2 N
 L M L M L M L M M
 3 3 E
-M M R M M R M R R M 
+M M R M M R M R R M
 
 Expected Output:
 1 3 N
 5 1 E
 
-# Possible improvements
-# If the plateau's coordinates are wrong they are defaulted to zero by the input function
-# So, loop until the previous are correct
-# Abstract the coordinates and orientation of the plateau or rover by creating classes
-# Automate the testing of the UI
+Fix readme file with proper format
+Do the coordinates
