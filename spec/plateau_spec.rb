@@ -90,31 +90,31 @@ RSpec.describe 'A plateau' do
   it 'should run example 1' do
     rover = Rover.new(1,2,"N")
     @plateau.rover = rover
-    @plateau.move_rover("L M L M L M L M M")
+    @plateau.rover.move("L M L M L M L M M",@plateau.max_x,@plateau.max_y)
     expect(@plateau.rover.get_position).to eq("#{1}-#{3}-N")
   end
   it 'should run example 2' do
     rover = Rover.new(3,3,"E")
     @plateau.rover = rover
-    @plateau.move_rover("M M R M M R M R R M")
+    @plateau.rover.move("M M R M M R M R R M", @plateau.max_x,@plateau.max_y)
     expect(@plateau.rover.get_position).to eq("#{5}-#{1}-E")
   end
   it 'should run example 3' do
     rover = Rover.new(3,3,"E")
     @plateau.rover = rover
-    @plateau.move_rover("M M M M M M")
+    @plateau.rover.move("M M M M M M", @plateau.max_x,@plateau.max_y)
     expect(@plateau.rover.get_position).to eq("#{MAX_PLATEAU_X}-#{3}-E")
   end
   it 'should run example 4' do
     rover = Rover.new(3,3,"W")
     @plateau.rover = rover
-    @plateau.move_rover("M M M M M M")
+    @plateau.rover.move("M M M M M M", @plateau.max_x,@plateau.max_y)
     expect(@plateau.rover.get_position).to eq("#{0}-#{3}-W")
   end
   it 'should run example 5' do
     rover = Rover.new(2,2,"W")
     @plateau.rover = rover
-    @plateau.move_rover("M R R M R M")
+    @plateau.rover.move("M R R M R M", @plateau.max_x,@plateau.max_y)
     expect(@plateau.rover.get_position).to eq("#{2}-#{1}-S")
   end
 end

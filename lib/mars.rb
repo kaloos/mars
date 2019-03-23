@@ -92,7 +92,7 @@ class Mars
             # add the rover to the plateau
             # we need to make sure that the rover is inside the plateau
             begin
-              plateau.add_rover(rover)
+              plateau.rover = rover
             rescue ArgumentError => e
               puts e.message
             else
@@ -102,7 +102,7 @@ class Mars
             # The second line is a series of instructions telling the rover how to explore the plateau
             # if any of the instructions is wrong we will just ignore it
             instructions = get_rover_instructions()
-            plateau.move_rover(instructions[0])
+            plateau.rover.move(instructions[0], plateau.max_x, plateau.max_y)
             # Each rover finishes sequentially
             puts plateau.rover.get_position()
           else

@@ -31,14 +31,5 @@ class Plateau
     @rover = value
   end
 
-  def move_rover(instructions)
-    instructions.each_char do |each_character|
-      case each_character
-        when 'R' then rover.turn_right
-        when 'L' then rover.turn_left
-        when 'M' then rover.move_forward(max_x, max_y)
-      end
-    end
-  end
 
 end

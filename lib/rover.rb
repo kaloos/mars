@@ -43,7 +43,7 @@ class Rover
     end
   end
 
-  def move_forward (max_x, max_y)
+  def move_forward(max_x, max_y)
       case @orientation
         when "N"
           if @y_coordinate < max_y
@@ -63,4 +63,15 @@ class Rover
           end
       end
   end
+
+  def move(instructions, max_x, max_y)
+    instructions.each_char do |each_character|
+      case each_character
+      when 'R' then self.turn_right
+      when 'L' then self.turn_left
+      when 'M' then self.move_forward(max_x, max_y)
+      end
+    end
+  end
+
 end
