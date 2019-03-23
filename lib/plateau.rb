@@ -9,7 +9,7 @@ class Plateau
 
   def initialize (x, y)
     #check x, y are integers
-    raise ArgumentError, PLT_INPUT_ERR01 unless x.is_a?(Integer) and y.is_a?(Integer)
+      raise ArgumentError, PLT_INPUT_ERR01 unless x.is_a?(Integer) and y.is_a?(Integer)
     #check x,y are positive integers
     raise ArgumentError, PLT_INPUT_ERR04 unless x>=0 && y>=0
     @max_x = x
@@ -25,13 +25,10 @@ class Plateau
     return x >= 0 && x <= @max_x && y >= 0 && y <= @max_y
   end
 
-  def add_rover(rover)
-    raise ArgumentError, PLT_INPUT_ERR03 unless rover!=nil
-    if is_a_point_inside(rover.x_coordinate,rover.y_coordinate)
-      @rover = rover
-    else
-      raise ArgumentError, PLT_INPUT_ERR02
-    end
+  def rover=(value)
+    raise ArgumentError, PLT_INPUT_ERR03 unless value!=nil
+    raise ArgumentError, PLT_INPUT_ERR02 unless is_a_point_inside(value.x_coordinate,value.y_coordinate)
+    @rover = value
   end
 
   def move_rover(instructions)
